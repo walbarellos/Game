@@ -1,0 +1,50 @@
+{
+  "antenor_protocolo": {
+    "name": "Seu Antenor",
+    "location": "escritorio_protocolo",
+    "faction": "Burocratas_Carreira",
+    "description": "Um funcionário público de carreira, cujo brilho nos olhos foi substituído por uma resignação cinzenta.",
+    "dialogue_tree": {
+      "start": {
+        "text": "Próximo... O que você quer?",
+        "options": [
+          {"text": "Estou aqui para protocolar um formulário.", "leads_to": "protocolo_info"},
+          {"text": "Apenas observando o sistema funcionar.", "leads_to": "observando"},
+          {"text": "[Sair]", "leads_to": "end"}
+        ]
+      },
+      "protocolo_info": {
+        "text": "Claro que está. Todos estão. Pegue uma senha e espere ser chamado. Talvez ano que vem.",
+        "options": [
+          {"text": "[Sair]", "leads_to": "end"}
+        ]
+      },
+      "observando": {
+        "text": "Observando, é? Sei. Menos observação e mais trabalho, novato.",
+        "options": [
+          {"text": "[Sair]", "leads_to": "end"}
+        ]
+      }
+    }
+  },
+  "julia_cafeina": {
+    "name": "Júlia 'Cafeína'",
+    "location": "cafeteria",
+    "faction": "Trabalhadores_Servicos",
+    "description": "A barista da cafeteria. Ela já viu de tudo e tem uma opinião ácida sobre cada um dos seus clientes.",
+    "dialogue_tree": {
+      "start": {
+        "text": "O de sempre? Aquele café aguado que vocês chamam de 'força'?",
+        "options": [
+          {"text": "Sim, por favor.", "leads_to": "end"},
+          {"text": "Ouvi alguma fofoca boa hoje?", "leads_to": "fofoca_check"}
+        ]
+      },
+      "fofoca_check": {
+        "text": "Fofoca custa caro, meu bem. Mas pra você... talvez eu abra uma exceção.",
+        "is_end": true,
+        "effect": {"lore_snippet": "Seu Antenor perdeu todo o seu 13º no jogo do bicho. Talvez ele esteja... 'receptivo' a ofertas."}
+      }
+    }
+  }
+}

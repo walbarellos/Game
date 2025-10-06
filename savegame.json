@@ -1,0 +1,29 @@
+{
+    "name": "Alexandrex_Moraes",
+    "attributes": {
+        "Poder": 10,
+        "Agilidade": 10,
+        "Fortitude": 10,
+        "Raciocínio": 10,
+        "Intuição": 10,
+        "Presença": 10
+    },
+    "skills": {
+        "Burocracia": 1
+    },
+    "level": 1,
+    "xp_atual": 70,
+    "xp_para_proximo_nivel": 100,
+    "pontos_de_aprimoramento": 0,
+    "saude_atual": 120,
+    "compostura_atual": 92,
+    "status_effects": [],
+    "quest_journal": {
+        "ativas": [],
+        "completas": [
+            "q001_protocolar_formulario",
+            "q002_comprar_cafe"
+        ]
+    },
+    "current_location": "cafeteria"
+}

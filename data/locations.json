@@ -1,0 +1,146 @@
+{
+  "escritorio_protocolo": {
+    "name": "Escritório de Protocolo Distrital 42",
+    "description": "O ar cheira a papel velho e desespero...",
+    "quests": ["q001_protocolar_formulario"],
+    "travel_to": ["cafeteria", "arquivo_municipal", "andar_superior"],
+    "ambient_actions": [
+      {
+        "id": "organizar_arquivos",
+        "name": "Organizar Arquivos",
+        "type": "idle",
+        "duration_seconds": 60,
+        "description": "Você gasta um tempo colocando formulários em ordem alfabética. É terrivelmente entediante.",
+        "reward": {"xp": 5, "composure_heal": 2}
+      }
+    ]
+  },
+
+  "cafeteria": {
+    "name": "Cafeteria 'Expresso Expresso'",
+    "description": "O café é aguado, mas a cafeína é real...",
+    "quests": ["q002_comprar_cafe"],
+    "travel_to": ["escritorio_protocolo", "andar_superior"],
+    "ambient_actions": [
+      {
+        "id": "ouvir_conversas",
+        "name": "Ouvir Conversas de Corredor",
+        "type": "skill_check",
+        "skill": "Intuição",
+        "dc": 10,
+        "description": "Você tenta captar alguma fofoca útil no meio do barulho.",
+        "on_success": {
+          "xp": 10,
+          "lore_snippet": "Ouvi dizer que o Auditor Fiscal do terceiro andar aceita 'gorjetas'..."
+        },
+        "on_failure": {
+          "composure_damage": 1
+        }
+      }
+    ]
+  },
+
+  "arquivo_municipal": {
+    "name": "Arquivo Municipal Subsolo 13",
+    "description": "Um lugar úmido, escuro e repleto de estantes desorganizadas.",
+    "quests": ["q004_buscar_documentos", "q007_ordenar_papeis"],
+    "travel_to": ["escritorio_protocolo", "andar_superior"],
+    "ambient_actions": [
+      {
+        "id": "vasculhar_estantes",
+        "name": "Vasculhar Estantes",
+        "type": "skill_check",
+        "skill": "Organização",
+        "dc": 12,
+        "description": "Você tenta encontrar algo útil entre os papéis empoeirados.",
+        "on_success": {
+          "xp": 15,
+          "item_found": "formulario_antigo"
+        },
+        "on_failure": {
+          "composure_damage": 2
+        }
+      },
+      {
+        "id": "encarar_silencio",
+        "name": "Encarar o Silêncio",
+        "type": "idle",
+        "duration_seconds": 30,
+        "description": "Você apenas se senta e tenta processar o absurdo da burocracia.",
+        "reward": {
+          "composure_heal": 3
+        }
+      }
+    ]
+  },
+
+  "andar_superior": {
+    "name": "Andar Superior – Administração Geral",
+    "description": "Tapetes gastos, quadros tortos e uma recepcionista que não pisca.",
+    "quests": ["q003_encontrar_b12", "q005_ajudar_colega"],
+    "travel_to": ["escritorio_protocolo", "cafeteria", "arquivo_municipal", "sala_chefe"],
+    "ambient_actions": [
+      {
+        "id": "esperar_atendimento",
+        "name": "Esperar Atendimento",
+        "type": "idle",
+        "duration_seconds": 40,
+        "description": "Você espera ser chamado. A senha parece nunca avançar.",
+        "reward": {
+          "xp": 5,
+          "composure_damage": 1
+        }
+      },
+      {
+        "id": "espionar_recepcao",
+        "name": "Espionar a Recepção",
+        "type": "skill_check",
+        "skill": "Discrição",
+        "dc": 14,
+        "description": "Você tenta ouvir o que a recepcionista está dizendo para outro funcionário.",
+        "on_success": {
+          "xp": 10,
+          "lore_snippet": "Parece que o chefe anda investigando seus próprios funcionários..."
+        },
+        "on_failure": {
+          "composure_damage": 2
+        }
+      }
+    ]
+  },
+
+  "sala_chefe": {
+    "name": "Sala do Chefe",
+    "description": "Uma sala iluminada demais, cheirando a perfume barato e segredos caros.",
+    "quests": ["q006_recuperar_segredos"],
+    "travel_to": ["andar_superior"],
+    "ambient_actions": [
+      {
+        "id": "observar_mesa_chefe",
+        "name": "Observar Mesa do Chefe",
+        "type": "skill_check",
+        "skill": "Intuição",
+        "dc": 15,
+        "description": "Você tenta descobrir padrões ou documentos visíveis sem tocar em nada.",
+        "on_success": {
+          "xp": 10,
+          "lore_snippet": "Há anotações sobre um projeto confidencial chamado 'Bastilha Digital'."
+        },
+        "on_failure": {
+          "composure_damage": 2
+        }
+      },
+      {
+        "id": "limpar_sala",
+        "name": "Limpar a Sala",
+        "type": "idle",
+        "duration_seconds": 45,
+        "description": "Você organiza discretamente os papéis da mesa. Pode render algum respeito...",
+        "reward": {
+          "xp": 8,
+          "composure_heal": 1
+        }
+      }
+    ]
+  }
+}
