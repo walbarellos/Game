@@ -3,13 +3,13 @@
     "title": "Protocolar o Formulário A-38",
     "description": "Um burocrata exige que você protocole o Formulário A-38.",
     "start_stage": "1",
-    "xp_reward": 50,
+    "recompensa_xp": 50,
     "stages": {
       "1": {
         "type": "idle",
         "description": "Aguardar na fila da repartição.",
         "duration_seconds": 10,
-        "next_stage": "2"
+        "proxima_etapa": "2"
       },
       "2": {
         "type": "skill_check",
@@ -17,32 +17,32 @@
         "skill": "Burocracia",
         "dc": 12,
         "attributes": ["Presença", "Raciocínio", "Poder"],
-        "on_success": "3_success",
-        "on_failure": "3_failure"
+        "em_sucesso": "3_success",
+        "em_falha": "3_failure"
       },
       "3_success": {
         "type": "narrative",
-        "description": "Convencido (ou intimidado), o atendente carimba seu formulário com uma força desnecessária. A missão está completa.",
-        "is_end": true
+        "description": "Convencido (ou intimidado), o atendente carimba seu formulário com uma força desnecessária. O Protocolo está completo.",
+        "fim_etapa": true
       },
       "3_failure": {
         "type": "narrative",
         "description": "Sua tentativa falha miseravelmente. O atendente, com um sorriso sádico, informa que para contestar a decisão, você precisa primeiro preencher o Formulário de Reclamação B-12... em outro prédio.",
-        "is_end": true,
-        "unlocks_quest": "q003_encontrar_b12"
+        "fim_etapa": true,
+        "desbloqueia_protocolo": "q003_encontrar_b12"
       }
     }
   },
   "q002_comprar_cafe": {
-    "title": "Missão do Café",
+    "title": "O Protocolo do Expresso (Propina Cafeinada)",
     "description": "Um funcionário sonolento se oferece para acelerar seu processo se você lhe trouxer um café 'duplo, sem açúcar, com espuma em formato de carimbo'.",
     "start_stage": "1",
-    "xp_reward": 20,
+    "recompensa_xp": 20,
     "stages": {
       "1": {
         "type": "narrative",
         "description": "Você aceita a nobre missão de buscar a bebida burocrática.",
-        "is_end": true
+        "fim_etapa": true
       }
     }
   },
@@ -50,13 +50,13 @@
     "title": "Encontrar o Formulário B-12",
     "description": "O atendente te mandou procurar um formulário B-12 em outro prédio. Parece que isso vai demorar.",
     "start_stage": "1",
-    "xp_reward": 30,
+    "recompensa_xp": 30,
     "stages": {
       "1": {
         "type": "idle",
         "description": "Você começa a sua jornada para o prédio vizinho. Talvez lá seja um pouco menos caótico.",
         "duration_seconds": 20,
-        "next_stage": "2"
+        "proxima_etapa": "2"
       },
       "2": {
         "type": "skill_check",
@@ -64,32 +64,32 @@
         "skill": "Persuasão",
         "dc": 15,
         "attributes": ["Presença", "Raciocínio"],
-        "on_success": "3_success",
-        "on_failure": "3_failure"
+        "em_sucesso": "3_success",
+        "em_falha": "3_failure"
       },
       "3_success": {
         "type": "narrative",
-        "description": "Você usa uma técnica de persuasão muito convincente e consegue se infiltrar na fila. A missão está quase no fim.",
-        "is_end": true
+        "description": "Você usa uma técnica de persuasão muito convincente e consegue se infiltrar na fila. O Protocolo está quase no fim.",
+        "fim_etapa": true
       },
       "3_failure": {
         "type": "narrative",
         "description": "O segurança percebe sua tentativa e o coloca na última posição da fila. Sua paciência será testada mais uma vez.",
-        "is_end": true
+        "fim_etapa": true
       }
     }
   },
   "q004_buscar_documentos": {
-    "title": "Buscar Documentos Esquecidos",
+    "title": "Recuperar o Arquivo Perdido do Arquivista Louco",
     "description": "O sistema eletrônico está fora do ar. A única forma de conseguir seu formulário é encontrando os documentos físicos em um arquivo antigo.",
     "start_stage": "1",
-    "xp_reward": 40,
+    "recompensa_xp": 40,
     "stages": {
       "1": {
         "type": "idle",
         "description": "Você começa a vasculhar uma pilha de papéis antigos e desorganizados. Quem sabe onde o documento está?",
         "duration_seconds": 30,
-        "next_stage": "2"
+        "proxima_etapa": "2"
       },
       "2": {
         "type": "skill_check",
@@ -97,18 +97,18 @@
         "skill": "Organização",
         "dc": 14,
         "attributes": ["Raciocínio", "Fortitude"],
-        "on_success": "3_success",
-        "on_failure": "3_failure"
+        "em_sucesso": "3_success",
+        "em_falha": "3_failure"
       },
       "3_success": {
         "type": "narrative",
-        "description": "Você encontra o documento escondido em um canto empoeirado. A missão está completa!",
-        "is_end": true
+        "description": "Você encontra o documento escondido em um canto empoeirado. O Protocolo está completo!",
+        "fim_etapa": true
       },
       "3_failure": {
         "type": "narrative",
         "description": "Você se cansa e começa a perder a paciência. Sem sucesso, vai precisar descansar e tentar de novo mais tarde.",
-        "is_end": true
+        "fim_etapa": true
       }
     }
   },
@@ -116,13 +116,13 @@
     "title": "Ajudar o Colega com o Formulário",
     "description": "Um colega de trabalho pede sua ajuda para preencher um formulário complicado. Pode ser uma chance de fazer um bom amigo ou um inimigo.",
     "start_stage": "1",
-    "xp_reward": 25,
+    "recompensa_xp": 25,
     "stages": {
       "1": {
         "type": "idle",
         "description": "Você começa a preencher o formulário para o colega. Vamos ver se ele vai aceitar suas sugestões.",
         "duration_seconds": 15,
-        "next_stage": "2"
+        "proxima_etapa": "2"
       },
       "2": {
         "type": "skill_check",
@@ -130,18 +130,18 @@
         "skill": "Negociação",
         "dc": 13,
         "attributes": ["Presença", "Raciocínio"],
-        "on_success": "3_success",
-        "on_failure": "3_failure"
+        "em_sucesso": "3_success",
+        "em_falha": "3_failure"
       },
       "3_success": {
         "type": "narrative",
-        "description": "O colega fica satisfeito e agradece. Sua relação com ele melhora. A missão está completa.",
-        "is_end": true
+        "description": "O colega fica satisfeito e agradece. Sua relação com ele melhora. O Protocolo está completo.",
+        "fim_etapa": true
       },
       "3_failure": {
         "type": "narrative",
         "description": "O colega não concorda com a forma como você preencheu o formulário e decide fazer as coisas do jeito dele. Isso pode gerar tensão entre vocês.",
-        "is_end": true
+        "fim_etapa": true
       }
     }
   },
@@ -149,13 +149,13 @@
     "title": "Recuperar Segredos da Mesa do Chefe",
     "description": "O chefe deixou alguns papéis confidenciais na mesa. Talvez você possa pegar uma cópia e descobrir algo interessante.",
     "start_stage": "1",
-    "xp_reward": 50,
+    "recompensa_xp": 50,
     "stages": {
       "1": {
         "type": "idle",
         "description": "O chefe saiu para uma reunião e você está sozinho na sala. Hora de investigar.",
         "duration_seconds": 25,
-        "next_stage": "2"
+        "proxima_etapa": "2"
       },
       "2": {
         "type": "skill_check",
@@ -163,18 +163,18 @@
         "skill": "Discrição",
         "dc": 16,
         "attributes": ["Agilidade", "Intuição"],
-        "on_success": "3_success",
-        "on_failure": "3_failure"
+        "em_sucesso": "3_success",
+        "em_falha": "3_failure"
       },
       "3_success": {
         "type": "narrative",
-        "description": "Você consegue pegar os papéis e sair sem ser visto. Agora tem informações que podem mudar tudo.",
-        "is_end": true
+        "description": "Você consegue pegar os papéis e sair sem ser visto. Agora tem informações que podem mudar tudo. O Protocolo está completo.",
+        "fim_etapa": true
       },
       "3_failure": {
         "type": "narrative",
         "description": "Você acidentalmente derruba uma pilha de papéis no chão. O chefe volta e você terá que lidar com as consequências.",
-        "is_end": true
+        "fim_etapa": true
       }
     }
   },
@@ -182,13 +182,13 @@
     "title": "Ordenar Papéis de Forma Urgente",
     "description": "Uma grande quantidade de papéis precisa ser organizada antes do final do expediente. Faça isso rapidamente para evitar problemas.",
     "start_stage": "1",
-    "xp_reward": 30,
+    "recompensa_xp": 30,
     "stages": {
       "1": {
         "type": "idle",
         "description": "Você começa a organizar os papéis, mas são tantos que é difícil manter o foco.",
         "duration_seconds": 45,
-        "next_stage": "2"
+        "proxima_etapa": "2"
       },
       "2": {
         "type": "skill_check",
@@ -196,32 +196,32 @@
         "skill": "Organização",
         "dc": 18,
         "attributes": ["Raciocínio", "Fortitude"],
-        "on_success": "3_success",
-        "on_failure": "3_failure"
+        "em_sucesso": "3_success",
+        "em_falha": "3_failure"
       },
       "3_success": {
         "type": "narrative",
-        "description": "Você consegue organizar os papéis a tempo. O chefe ficou satisfeito com o seu desempenho.",
-        "is_end": true
+        "description": "Você consegue organizar os papéis a tempo. O chefe ficou satisfeito com o seu desempenho. O Protocolo está completo.",
+        "fim_etapa": true
       },
       "3_failure": {
         "type": "narrative",
         "description": "Você não conseguiu terminar a tempo e o chefe ficou furioso. Espera-se mais de você.",
-        "is_end": true
+        "fim_etapa": true
       }
     }
   },
   "q008_testar_sistema": {
-    "title": "Testar o Novo Sistema de Arquivos",
+    "title": "Debugar o Monstro Eletrônico (Sistema Beta)",
     "description": "Você precisa testar a eficiência do novo sistema de arquivamento eletrônico da empresa.",
     "start_stage": "1",
-    "xp_reward": 35,
+    "recompensa_xp": 35,
     "stages": {
       "1": {
         "type": "idle",
         "description": "Você começa a aprender como usar o novo sistema. Ele parece ser bem mais simples do que o anterior.",
         "duration_seconds": 20,
-        "next_stage": "2"
+        "proxima_etapa": "2"
       },
       "2": {
         "type": "skill_check",
@@ -229,18 +229,31 @@
         "skill": "Informática",
         "dc": 17,
         "attributes": ["Intuição", "Raciocínio"],
-        "on_success": "3_success",
-        "on_failure": "3_failure"
+        "em_sucesso": "3_success",
+        "em_falha": "3_failure"
       },
       "3_success": {
         "type": "narrative",
-        "description": "Você resolve o erro no sistema e demonstra que o sistema está funcionando perfeitamente.",
-        "is_end": true
+        "description": "Você resolve o erro no sistema e demonstra que o sistema está funcionando perfeitamente. O Protocolo está completo.",
+        "fim_etapa": true
       },
       "3_failure": {
         "type": "narrative",
         "description": "O erro persiste e você é incapaz de resolver. O chefe decide que mais testes são necessários.",
-        "is_end": true
+        "fim_etapa": true
+      }
+    }
+  },
+  "q009_documento_secreto": {
+    "title": "Documento Manuscrito (Investigação)",
+    "description": "Você encontrou uma anotação suspeita 'Eles sabem. Queime isso.' O conteúdo do documento deve ser investigado antes de ser destruído.",
+    "start_stage": "1",
+    "recompensa_xp": 25,
+    "stages": {
+      "1": {
+        "type": "narrative",
+        "description": "Você esconde o documento para investigação. O Protocolo está ativo.",
+        "fim_etapa": true
       }
     }
   }

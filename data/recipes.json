@@ -1,13 +1,13 @@
 {
   "fabricar_b12": {
-    "name": "Fabricar Formulário de Reclamação B-12",
+    "name": "Rascunhar o B-12 (Item Secreto)",
     "description": "Você junta fragmentos de papel burocrático com um selo falsificado para criar o infame Formulário B-12.",
     "ingredients": {
       "formulario_antigo": 3,
       "selo_falsificado": 1
     },
-    "output": {
-      "item_id": "formulario_b12",
+    "resultado": {
+      "id_item": "formulario_b12",
       "quantidade": 1
     },
     "skill_check": {

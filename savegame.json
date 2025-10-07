@@ -1,5 +1,5 @@
 {
-    "name": "Alexandrex_Moraes",
+    "name": "DSSFW",
     "attributes": {
         "Poder": 10,
         "Agilidade": 10,
@@ -9,21 +9,37 @@
         "Presença": 10
     },
     "skills": {
-        "Burocracia": 1
+        "Burocracia": 1,
+        "Persuasão": 1,
+        "Organização": 1,
+        "Negociação": 1,
+        "Discrição": 1,
+        "Informática": 1
     },
-    "level": 1,
-    "xp_atual": 70,
-    "xp_para_proximo_nivel": 100,
-    "pontos_de_aprimoramento": 0,
-    "saude_atual": 120,
-    "compostura_atual": 92,
-    "status_effects": [],
+    "inventory": {},
+    "reputation": {},
     "quest_journal": {
         "ativas": [],
-        "completas": [
-            "q001_protocolar_formulario",
-            "q002_comprar_cafe"
+        "completas": {
+            "q001_protocolar_formulario": "success",
+            "q009_documento_secreto": "success"
+        },
+        "unlocked_quests": [
+            "q009_documento_secreto"
         ]
     },
-    "current_location": "cafeteria"
+    "status_effects": [],
+    "level": 1,
+    "xp_atual": 90,
+    "xp_para_proximo_nivel": 100,
+    "pontos_de_aprimoramento": 0,
+    "current_location": "escritorio_protocolo",
+    "game_flags": {
+        "idle_mode": false,
+        "current_idle_action": "organizar_arquivos",
+        "idle_count": 3,
+        "julia_cafeina_talked": true,
+        "antenor_protocolo_talked": true
+    },
+    "saude_atual": 114
 }

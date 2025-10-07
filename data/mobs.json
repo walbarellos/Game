@@ -1,0 +1,12 @@
+{
+  "grampeador_raivoso": {
+    "name": "Grampeador Raivoso",
+    "description": "Um grampeador de mesa, enferrujado e cheio de ódio burocrático.",
+    "saude_maxima": 15,
+    "saude_atual": 15,
+    "ataque_base": 5,
+    "dc_defesa": 12,
+    "xp_recompensa": 20,
+    "item_drop": {"grampo_afiado": 1}
+  }
+}

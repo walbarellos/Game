@@ -1,29 +1,29 @@
 # /src/o_fardo_do_cidadao/engine/game_logic.py
+# Base lógica pura e robusta para Skill Checks e Combate.
 
 import random
 from collections import namedtuple
 from enum import Enum, auto
-from o_fardo_do_cidadao.core.character import Character
+from o_fardo_do_cidadao.core.character import Character 
 
 XP_POR_TESTE_SUCESSO = 10
 
-# NOVO: Enum para definir claramente os graus de sucesso
 class SuccessTier(Enum):
     CRITICAL_FAILURE = auto()
     FAILURE = auto()
-    SUCCESS_WITH_COST = auto() # Ainda não implementado, mas a estrutura está pronta
+    SUCCESS_WITH_COST = auto() 
     SUCCESS = auto()
     CRITICAL_SUCCESS = auto()
 
-# ALTERADO: Adicionado 'tier' ao resultado
-SkillCheckResult = namedtuple("SkillCheckResult", ["success", "margin", "xp_gain", "tier"])
+# CORRIGIDO: Adicionado 'dc' e 'total' ao SkillCheckResult
+SkillCheckResult = namedtuple("SkillCheckResult", ["success", "margin", "xp_gain", "tier", "roll", "dc", "total"])
 
 def perform_skill_check(character: Character, skill: str, attribute: str, dc: int) -> SkillCheckResult:
     """
-    Executa um teste de perícia com graus de sucesso e falha.
+    Executa um teste de perícia central. Aplica penalidade de Saúde em caso de falha.
     """
     roll = random.randint(1, 20)
-    modifier = character.get_attribute_modifier(attribute)
+    modifier = character.get_attribute_modifier(attribute) 
     bonus = character.get_skill_bonus(skill)
     total = roll + modifier + bonus
     margin = total - dc
@@ -31,7 +31,7 @@ def perform_skill_check(character: Character, skill: str, attribute: str, dc: in
     xp_gain = 0
     tier: SuccessTier
 
-    # NOVO: Lógica para determinar o grau de sucesso
+    # --- Lógica de Determinação de Tier (Robusta) ---
     if roll == 1:
         tier = SuccessTier.CRITICAL_FAILURE
         success = False
@@ -40,28 +40,27 @@ def perform_skill_check(character: Character, skill: str, attribute: str, dc: in
         success = True
     elif not success:
         tier = SuccessTier.FAILURE
-    else: # success is True
-        if margin >= 10: # Sucesso por uma margem ampla
+    else:
+        if margin >= 5: 
             tier = SuccessTier.CRITICAL_SUCCESS
         else:
             tier = SuccessTier.SUCCESS
 
-    print(f"Teste de {skill} ({attribute}): Rolagem={roll}, Mod={modifier}, Bônus={bonus} -> Total={total} vs CD={dc}")
-
-    # NOVO: Lógica de recompensa/penalidade baseada no tier
+    # --- Lógica de Recompensa/Penalidade (Alinhada à Saúde) ---
+    
     if tier == SuccessTier.SUCCESS:
         xp_gain = XP_POR_TESTE_SUCESSO
-        print("Sucesso!")
+
     elif tier == SuccessTier.CRITICAL_SUCCESS:
-        xp_gain = XP_POR_TESTE_SUCESSO * 2 # Recompensa dobrada!
-        print("SUCESSO CRÍTICO!")
+        xp_gain = XP_POR_TESTE_SUCESSO * 2
+
     elif tier == SuccessTier.FAILURE:
-        composure_damage = abs(margin)
-        character.apply_composure_damage(composure_damage)
-        print("Falha.")
-    elif tier == SuccessTier.CRITICAL_FAILURE:
-        composure_damage = abs(margin) + 5 # Penalidade extra!
-        character.apply_composure_damage(composure_damage)
-        print("FALHA CRÍTICA!")
+        saude_damage = 1
+        character.aplicar_dano_saude(saude_damage)
         
-    return SkillCheckResult(success=success, margin=margin, xp_gain=xp_gain, tier=tier)
+    elif tier == SuccessTier.CRITICAL_FAILURE:
+        saude_damage = 5 
+        character.aplicar_dano_saude(saude_damage)
+        
+    # --- Retorno ---
+    return SkillCheckResult(success=success, margin=margin, xp_gain=xp_gain, tier=tier, roll=roll, dc=dc, total=total)

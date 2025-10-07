@@ -4,6 +4,7 @@
     "location": "escritorio_protocolo",
     "faction": "Burocratas_Carreira",
     "description": "Um funcionário público de carreira, cujo brilho nos olhos foi substituído por uma resignação cinzenta.",
+    "dialogue_cooldown": "cooldown_response",
     "dialogue_tree": {
       "start": {
         "text": "Próximo... O que você quer?",
@@ -21,6 +22,12 @@
       },
       "observando": {
         "text": "Observando, é? Sei. Menos observação e mais trabalho, novato.",
+        "options": [
+          {"text": "[Sair]", "leads_to": "end"}
+        ]
+      },
+      "cooldown_response": {
+        "text": "Não me atrapalhe. O café está acabando e a lista de espera só cresce.",
         "options": [
           {"text": "[Sair]", "leads_to": "end"}
         ]
@@ -42,8 +49,8 @@
       },
       "fofoca_check": {
         "text": "Fofoca custa caro, meu bem. Mas pra você... talvez eu abra uma exceção.",
-        "is_end": true,
-        "effect": {"lore_snippet": "Seu Antenor perdeu todo o seu 13º no jogo do bicho. Talvez ele esteja... 'receptivo' a ofertas."}
+        "fim_etapa": true,
+        "effect": {"fragmento_lore": "Seu Antenor perdeu todo o seu 13º no jogo do bicho. Talvez ele esteja... 'receptivo' a ofertas.", "unlocks_flag": "fofoca_antenor_13"}
       }
     }
   }

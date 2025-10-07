@@ -7,15 +7,48 @@
     "ambient_actions": [
       {
         "id": "organizar_arquivos",
-        "name": "Organizar Arquivos",
+        "name": "Afogar-se na Papelada",
         "type": "idle",
         "duration_seconds": 60,
         "description": "Você gasta um tempo colocando formulários em ordem alfabética. É terrivelmente entediante.",
-        "reward": {"xp": 5, "composure_heal": 2}
+        "recompensa": {"xp": 5},
+        
+        "surtos_potenciais": [
+          {
+            "chance": 0.15,
+            "id": "encontrar_documento_estranho",
+            "description": "🚨 SURTO ATIVO: No meio da pilha, você encontra um formulário manchado de café com uma anotação na margem: 'Eles sabem. Queime isso.'",
+            "effect": {"desbloqueia_protocolo": "q009_documento_secreto"}
+          },
+          {
+            "chance": 0.20,
+            "id": "surto_de_organizacao",
+            "description": "SURTO: De repente, os papéis parecem se organizar sozinhos. Você se sente revigorado pela ordem momentânea.",
+            "effect": {"saude_heal": 5}
+          },
+          {
+            "chance": 0.10,
+            "id": "ataque_do_grampeador",
+            "description": "🚨 SURTO ATIVO: A pilha de papéis desmorona, revelando um grampeador raivoso que te ataca!",
+            "challenge": {
+                "type": "combat",
+                "mob_id": "grampeador_raivoso",
+                "on_win_xp": 5,
+                "on_win_item": "grampo_afiado"
+            }
+          }
+        ]
+      },
+      {
+        "id": "tomar_cafe",
+        "name": "Tomar Café Forte",
+        "type": "idle",
+        "duration_seconds": 15,
+        "description": "O café de máquina é terrível, mas a cafeína é a única lei aqui.",
+        "recompensa": {"saude_heal": 2}
       }
     ]
   },
-
   "cafeteria": {
     "name": "Cafeteria 'Expresso Expresso'",
     "description": "O café é aguado, mas a cafeína é real...",
@@ -24,22 +57,21 @@
     "ambient_actions": [
       {
         "id": "ouvir_conversas",
-        "name": "Ouvir Conversas de Corredor",
+        "name": "Escutar o Rádio-Fofoca",
         "type": "skill_check",
         "skill": "Intuição",
         "dc": 10,
         "description": "Você tenta captar alguma fofoca útil no meio do barulho.",
-        "on_success": {
+        "em_sucesso": {
           "xp": 10,
-          "lore_snippet": "Ouvi dizer que o Auditor Fiscal do terceiro andar aceita 'gorjetas'..."
+          "fragmento_lore": "Ouvi dizer que o Auditor Fiscal do terceiro andar aceita 'gorjetas'..."
         },
-        "on_failure": {
-          "composure_damage": 1
+        "em_falha": {
+          "saude_damage": 1
         }
       }
     ]
   },
-
   "arquivo_municipal": {
     "name": "Arquivo Municipal Subsolo 13",
     "description": "Um lugar úmido, escuro e repleto de estantes desorganizadas.",
@@ -48,32 +80,31 @@
     "ambient_actions": [
       {
         "id": "vasculhar_estantes",
-        "name": "Vasculhar Estantes",
+        "name": "Fazer Arqueologia Burocrática",
         "type": "skill_check",
         "skill": "Organização",
         "dc": 12,
         "description": "Você tenta encontrar algo útil entre os papéis empoeirados.",
-        "on_success": {
+        "em_sucesso": {
           "xp": 15,
           "item_found": "formulario_antigo"
         },
-        "on_failure": {
-          "composure_damage": 2
+        "em_falha": {
+          "saude_damage": 2
         }
       },
       {
         "id": "encarar_silencio",
-        "name": "Encarar o Silêncio",
+        "name": "Meditar sobre o Absurdo",
         "type": "idle",
         "duration_seconds": 30,
         "description": "Você apenas se senta e tenta processar o absurdo da burocracia.",
-        "reward": {
-          "composure_heal": 3
+        "recompensa": {
+          "saude_heal": 5
         }
       }
     ]
   },
-
   "andar_superior": {
     "name": "Andar Superior – Administração Geral",
     "description": "Tapetes gastos, quadros tortos e uma recepcionista que não pisca.",
@@ -82,28 +113,28 @@
     "ambient_actions": [
       {
         "id": "esperar_atendimento",
-        "name": "Esperar Atendimento",
+        "name": "Testar Limites de Paciência",
         "type": "idle",
         "duration_seconds": 40,
         "description": "Você espera ser chamado. A senha parece nunca avançar.",
-        "reward": {
+        "recompensa": {
           "xp": 5,
-          "composure_damage": 1
+          "saude_damage": 2
         }
       },
       {
         "id": "espionar_recepcao",
-        "name": "Espionar a Recepção",
+        "name": "Captar o Sinal (Espionagem)",
         "type": "skill_check",
         "skill": "Discrição",
         "dc": 14,
         "description": "Você tenta ouvir o que a recepcionista está dizendo para outro funcionário.",
-        "on_success": {
+        "em_sucesso": {
           "xp": 10,
-          "lore_snippet": "Parece que o chefe anda investigando seus próprios funcionários..."
+          "fragmento_lore": "Parece que o chefe anda investigando seus próprios funcionários..."
         },
-        "on_failure": {
-          "composure_damage": 2
+        "em_falha": {
+          "saude_damage": 2
         }
       }
     ]
@@ -122,12 +153,12 @@
         "skill": "Intuição",
         "dc": 15,
         "description": "Você tenta descobrir padrões ou documentos visíveis sem tocar em nada.",
-        "on_success": {
+        "em_sucesso": {
           "xp": 10,
-          "lore_snippet": "Há anotações sobre um projeto confidencial chamado 'Bastilha Digital'."
+          "fragmento_lore": "Há anotações sobre um projeto confidencial chamado 'Bastilha Digital'."
         },
-        "on_failure": {
-          "composure_damage": 2
+        "em_falha": {
+          "saude_damage": 2
         }
       },
       {
@@ -136,9 +167,9 @@
         "type": "idle",
         "duration_seconds": 45,
         "description": "Você organiza discretamente os papéis da mesa. Pode render algum respeito...",
-        "reward": {
+        "recompensa": {
           "xp": 8,
-          "composure_heal": 1
+          "saude_heal": 1
         }
       }
     ]
